@@ -17,11 +17,13 @@ ThingFactory = (function () {
         let thing = {};
 
         thing.copy = function (otherThing) {
-            
+            thing.attr = otherThing.attr;
+            return thing;
         };
 
-        thing.create = function () {
-
+        thing.create = function (attr) {
+        	thing.attr = attr || "";
+        	return thing;
         };
 
         return thing;
@@ -39,5 +41,5 @@ let thing = ThingFactory().create();
 
 ```js
 let thing = ThingFactory().create();
-let thingCopy = ThingFactory().copy(thing1);
+let thingCopy = ThingFactory().copy(thing);
 ``` 
