@@ -20,7 +20,7 @@ ThingFactory = (function () {
 
     thing.create = function (attr = "") {
         this.attr = attr;
-        return thing;
+        return this;
     };
 
     return function () {
