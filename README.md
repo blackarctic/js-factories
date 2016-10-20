@@ -11,22 +11,20 @@ I have found this to work quite well for most applications.
 let ThingFactory;
 
 ThingFactory = (function () {
-    let factory = {};
+    let thing = {};
+
+    thing.copy = function (otherThing) {
+        this.attr = otherThing.attr;
+        return this;
+    };
+
+    thing.create = function (attr = "") {
+        this.attr = attr;
+        return thing;
+    };
 
     return function () {
-        let thing = {};
-
-        thing.copy = function (otherThing) {
-            thing.attr = otherThing.attr;
-            return thing;
-        };
-
-        thing.create = function (attr) {
-        	thing.attr = attr || "";
-        	return thing;
-        };
-
-        return thing;
+        return Object.assign({}, thing);
     };
 })(); // end ThingFactory
 ```
